@@ -25,14 +25,16 @@ const studentSlice = createSlice({
     reducers: {
         // Thêm sinh viên vào slice
         addStudent: (state, action: PayloadAction<Student>) => {
-            state.students.push(action.payload);
+            state.students.push(action.payload); // Thêm sinh viên mới vào cuối bảng.
         },
 
         // Cập nhật sinh viên trong slice
-        updateStudent: (state, action: PayloadAction<Student>) => {
+        updateStudent: (state, action: PayloadAction<Student>) => { 
+            // Duyệt qua toàn bộ dữ liệu để tìm id
             const index = state.students.findIndex((s) => s.id === action.payload.id);
 
             if (index !== -1) {
+                // Gán dữ liệu mới 
                 state.students[index] = action.payload;
             }
         },
